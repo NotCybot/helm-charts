@@ -1,0 +1,31 @@
+apiVersion: v1
+entries:
+  pgadmin:
+  - apiVersion: v2
+    appVersion: 9.18.0
+    created: "2026-10-14T17:13:25.750604923Z"
+    description: Web based administration tool for PostgreSQL
+    digest: cbb664e7c04c4df0a1011626a9ef4e3dd197c090cd2486d2f527545af1f1c4f8
+    home: https://www.pgadmin.org
+    name: pgadmin
+    sources:
+    - https://github.com/pgadmin-org/pgadmin4
+    type: application
+    urls:
+    - https://github.com/NotCybot/helm-charts/releases/download/pgadmin-0.1.0/pgadmin-0.1.0.tgz
+    version: 0.1.0
+  tautulli:
+  - apiVersion: v2
+    appVersion: v2.18.2
+    created: "2026-10-14T17:13:25.937652124Z"
+    description: Monitoring and tracking tool for Plex Media Server
+    digest: e779edee899c8dbfe8ccd2d57013708d9f588a43ea56f99400d2b483c3e107ea
+    home: https://tautulli.com
+    name: tautulli
+    sources:
+    - https://github.com/Tautulli/Tautulli
+    type: application
+    urls:
+    - https://github.com/NotCybot/helm-charts/releases/download/tautulli-0.1.0/tautulli-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-10-14T17:13:25.937659972Z"
