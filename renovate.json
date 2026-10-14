@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>NotCybot/renovate-config"],
+  "packageRules": [
+    {
+      "description": "A new image is a new chart release",
+      "matchManagers": ["helm-values", "custom.regex"],
+      "matchFileNames": ["charts/**"],
+      "bumpVersion": "patch"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Keep appVersion in line with the image tag in values.yaml",
+      "managerFilePatterns": ["/^charts/[^/]+/Chart\\.yaml$/"],
+      "matchStrings": [
+        "appVersion: \"?(?<currentValue>[^\"\\s]+)\"? # renovate: image=(?<depName>\\S+)"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
+}

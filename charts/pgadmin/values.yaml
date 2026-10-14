@@ -1,0 +1,53 @@
+image:
+  repository: dpage/pgadmin4
+  tag: "9.18.0"
+  pullPolicy: IfNotPresent
+
+# Plain environment variables, e.g. TZ: Europe/Berlin
+env: {}
+
+# pgAdmin settings, each becomes PGADMIN_CONFIG_<key> (values are Python literals)
+config:
+  PROXY_X_PROTO_COUNT: "1"
+  PROXY_X_HOST_COUNT: "1"
+
+# Secret with PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD, plus OIDC_CLIENT_ID,
+# OIDC_CLIENT_SECRET and OIDC_METADATA_URL when oidc is enabled.
+# With storeName and path set, an ExternalSecret creates it from that store.
+secret:
+  name: ""
+  storeName: ""
+  path: ""
+
+# Login through an OpenID Connect provider next to the internal login
+oidc:
+  enabled: false
+  name: oidc
+  displayName: OpenID Connect
+  scope: openid email profile
+  icon: fa-key
+  buttonColor: "#3c78d8"
+  autoCreateUser: true
+
+# Content of servers.json, imported on every start: { "1": { "Name": ..., "Host": ... } }
+servers: {}
+
+persistence:
+  # Use an existing claim instead of creating <release>-data
+  existingClaim: ""
+  size: 1Gi
+  storageClass: ""
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  host: ""
+  tls: []
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 256Mi
+  limits:
+    memory: 512Mi

@@ -1,0 +1,13 @@
+{{- with .Values.servers }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $.Release.Name }}-servers
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: {{ $.Release.Name }}
+data:
+  servers.json: |
+    {{- dict "Servers" . | toPrettyJson | nindent 4 }}
+{{- end }}
