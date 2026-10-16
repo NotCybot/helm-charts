@@ -1,0 +1,9 @@
+apiVersion: v2
+name: free-games-claimer
+description: Claims free games on Steam, Epic Games and Fab, with a noVNC view of the browser
+type: application
+version: 0.1.0
+appVersion: "v1.15" # renovate: image=ghcr.io/p-adamiec/free-games-claimer-remaster
+home: https://github.com/P-Adamiec/Free-Games-Claimer-Remaster
+sources:
+  - https://github.com/P-Adamiec/Free-Games-Claimer-Remaster

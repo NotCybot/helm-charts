@@ -1,0 +1,32 @@
+image:
+  repository: ghcr.io/p-adamiec/free-games-claimer-remaster
+  tag: v1.15
+  pullPolicy: IfNotPresent
+
+replicas: 1
+
+# Plain environment variables, e.g. STORES: steam,epic
+env: {}
+
+# Secret with the store logins and VNC_PASSWORD, loaded as environment variables
+existingSecret: ""
+
+persistence:
+  # Use an existing claim instead of creating <release>-data
+  existingClaim: ""
+  size: 5Gi
+  storageClass: ""
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  host: ""
+  tls: []
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    memory: 2Gi
