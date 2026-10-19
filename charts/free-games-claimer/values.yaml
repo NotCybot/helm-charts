@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/p-adamiec/free-games-claimer-remaster
-  tag: v1.15
+  tag: v1.16
   pullPolicy: IfNotPresent
 
 replicas: 1
