@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   free-games-claimer:
   - apiVersion: v2
+    appVersion: v1.16
+    created: "2026-10-20T11:07:14.554312535Z"
+    description: Claims free games on Steam, Epic Games and Fab, with a noVNC view
+      of the browser
+    digest: 1f8212ca6bee57d7650687b5d99e2ec07a078df7f46a0e51efff3764d6bf6b98
+    home: https://github.com/P-Adamiec/Free-Games-Claimer-Remaster
+    name: free-games-claimer
+    sources:
+    - https://github.com/P-Adamiec/Free-Games-Claimer-Remaster
+    type: application
+    urls:
+    - https://github.com/NotCybot/helm-charts/releases/download/free-games-claimer-0.1.1/free-games-claimer-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: v1.15
     created: "2026-10-16T10:08:35.65468061Z"
     description: Claims free games on Steam, Epic Games and Fab, with a noVNC view
@@ -43,4 +57,4 @@ entries:
     urls:
     - https://github.com/NotCybot/helm-charts/releases/download/tautulli-0.1.0/tautulli-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-16T10:08:35.654687684Z"
+generated: "2026-10-20T11:07:14.554323836Z"
