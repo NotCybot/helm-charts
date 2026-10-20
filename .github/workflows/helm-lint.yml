@@ -16,3 +16,27 @@ jobs:
         uses: azure/setup-helm@9bc31f4ebc9c6b171d7bfbaa5d006ae7abdb4310 # v5
       - name: Lint Helm charts
         run: helm lint ./charts/* --strict
+
+  version-bump:
+    # chart-releaser skips versions that already exist, so a chart change without a bump never reaches Argo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - name: Changed charts must bump version
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          fail=0
+          for chart in $(git diff --name-only "$BASE" HEAD -- charts | cut -d/ -f2 | sort -u); do
+            [ -f "charts/$chart/Chart.yaml" ] || continue
+            old=$(git show "$BASE:charts/$chart/Chart.yaml" 2>/dev/null | yq '.version') || continue
+            new=$(yq '.version' "charts/$chart/Chart.yaml")
+            if [ "$old" = "$new" ]; then
+              echo "::error file=charts/$chart/Chart.yaml::$chart changed but version is still $new"
+              fail=1
+            fi
+          done
+          exit $fail

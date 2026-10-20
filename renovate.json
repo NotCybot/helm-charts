@@ -1,12 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>NotCybot/renovate-config"],
-  "packageRules": [
+  "bumpVersions": [
     {
       "description": "A new image is a new chart release",
-      "matchManagers": ["helm-values", "custom.regex"],
-      "matchFileNames": ["charts/**"],
-      "bumpVersion": "patch"
+      "filePatterns": ["{{packageFileDir}}/Chart.yaml"],
+      "matchStrings": ["version:\\s(?<version>[^\\s]+)"]
     }
   ],
   "customManagers": [
